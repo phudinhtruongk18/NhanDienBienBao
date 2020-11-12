@@ -8,7 +8,7 @@ mang = [0, 0, 0, 0]
 
 orb = cv2.ORB_create(nfeatures=1000)
 
-path = "test/bienBao"
+path = "test/bienBao3"
 listAnh = []
 listNameAnh = []
 myList = os.listdir(path)
@@ -66,16 +66,16 @@ while (True):
     liveMauSac = live.copy()
     live = cv2.cvtColor(live, cv2.COLOR_BGR2GRAY)
 
-    tenCuaAnh = timID(live, Nhandang, 30)
+    tenCuaAnh = timID(live, Nhandang, 6)
     if id != -1:
         cv2.putText(liveMauSac, listNameAnh[tenCuaAnh], (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
         check(listNameAnh[tenCuaAnh], mang)
-        if mang[0] == 10:
-            mang[0] = 0
-            pyautogui.click(1247, 583)
-            print("click B")
-        if mang[1] == 10:
-            mang[1] = 0
-            print("click C")
+        # if mang[0] == 10:
+        #     mang[0] = 0
+        #     pyautogui.click(1247, 583)
+        #     print("click B")
+        # if mang[1] == 10:
+        #     mang[1] = 0
+        #     print("click C")
     cv2.imshow("laichym", liveMauSac)
     cv2.waitKey(1)
