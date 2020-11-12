@@ -1,10 +1,12 @@
 import cv2
 import numpy as np
+import pyautogui
+import mouseinfo
 
-imgA = cv2.imread("quiz/quizA.png",0)
+imgA = cv2.imread("quiz/caua.png",0)
 
 # imgTrain = cv2.imread("quiz/test/anh1.jpg",0) # add 0 to grayscale
-imgTrain = cv2.imread("quiz/test/anh3.jpg",0)
+imgTrain = cv2.imread("test/anh3.jpg",0)
 
 orb = cv2.ORB_create(nfeatures=1000)
 

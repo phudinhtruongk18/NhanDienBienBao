@@ -1,10 +1,14 @@
 import cv2
-import numpy as np
 import os
+import pyautogui
+
+# x661  1247
+# y506   583
+mang = [0, 0, 0, 0]
 
 orb = cv2.ORB_create(nfeatures=1000)
 
-path = "test"
+path = "test/bienBao"
 listAnh = []
 listNameAnh = []
 myList = os.listdir(path)
@@ -47,39 +51,31 @@ def timID(live, NhanDang, phucTap):
     return ketLuan
 
 
+def check(name, mang):
+    if name == 'quizB1':
+        mang[0] = mang[0] + 1
+    if name == 'quizC1':
+        mang[1] = mang[1] + 1
+
+
 Nhandang = timDacDiem(listAnh)
 print(len(Nhandang))
-
 quay = cv2.VideoCapture(0)
 while (True):
     success, live = quay.read()
     liveMauSac = live.copy()
     live = cv2.cvtColor(live, cv2.COLOR_BGR2GRAY)
 
-    tenCuaAnh = timID(live, Nhandang, 15)
+    tenCuaAnh = timID(live, Nhandang, 30)
     if id != -1:
-        cv2.putText(liveMauSac, listNameAnh[tenCuaAnh],(50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
-
+        cv2.putText(liveMauSac, listNameAnh[tenCuaAnh], (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
+        check(listNameAnh[tenCuaAnh], mang)
+        if mang[0] == 10:
+            mang[0] = 0
+            pyautogui.click(1247, 583)
+            print("click B")
+        if mang[1] == 10:
+            mang[1] = 0
+            print("click C")
     cv2.imshow("laichym", liveMauSac)
     cv2.waitKey(1)
-
-# imgKpA = cv2.drawKeypoints(imgA, kpA, None)
-# imgKpTrain = cv2.drawKeypoints(imgTrain,kpTrain,None)
-#
-# bf = cv2.BFMatcher() #bruce force
-# matches = bf.knnMatch(desA, desTrain, k=2) # 2 value can compare on
-#
-# good = []
-# for m,n in matches:
-#     if m.distance < 0.75*n.distance:
-#         good.append([m])
-# print(len(good))
-# imgTemp = cv2.drawMatchesKnn(imgA, kpA, imgTrain, kpTrain, good, None,flags=2)
-#
-# cv2.imshow("kp1",imgKpA)
-# cv2.imshow("kpTrain",imgKpTrain)
-# cv2.imshow("cauA", imgA)
-# cv2.imshow("Train", imgTrain)
-# # cv2.imshow("Train2", imgTrain2)
-# cv2.imshow("img Match",imgTemp)
-# cv2.waitKey(0)
