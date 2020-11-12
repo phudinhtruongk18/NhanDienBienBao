@@ -1,19 +1,11 @@
 import cv2
 import os
-import pyautogui
-
-# x661  1247
-# y506   583
-mang = [0, 0, 0, 0]
 
 orb = cv2.ORB_create(nfeatures=1000)
-
 path = "test/bienBao3"
 listAnh = []
 listNameAnh = []
 myList = os.listdir(path)
-print(myList)
-print("tat ca file la", len(myList))
 
 for name in myList:
     imgNow = cv2.imread(f'{path}/{name}', 0)
@@ -51,13 +43,6 @@ def timID(live, NhanDang, phucTap):
     return ketLuan
 
 
-def check(name, mang):
-    if name == 'quizB1':
-        mang[0] = mang[0] + 1
-    if name == 'quizC1':
-        mang[1] = mang[1] + 1
-
-
 Nhandang = timDacDiem(listAnh)
 print(len(Nhandang))
 quay = cv2.VideoCapture(0)
@@ -69,13 +54,5 @@ while (True):
     tenCuaAnh = timID(live, Nhandang, 6)
     if id != -1:
         cv2.putText(liveMauSac, listNameAnh[tenCuaAnh], (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
-        check(listNameAnh[tenCuaAnh], mang)
-        # if mang[0] == 10:
-        #     mang[0] = 0
-        #     pyautogui.click(1247, 583)
-        #     print("click B")
-        # if mang[1] == 10:
-        #     mang[1] = 0
-        #     print("click C")
-    cv2.imshow("laichym", liveMauSac)
+    cv2.imshow("Phan Mem Nhan Dien Bien Bao", liveMauSac)
     cv2.waitKey(1)
