@@ -46,7 +46,7 @@ def timID(live, NhanDang, phucTap):
 Nhandang = timDacDiem(listAnh)
 print(len(Nhandang))
 quay = cv2.VideoCapture(0)
-while (True):
+while True:
     success, live = quay.read()
     liveMauSac = live.copy()
     live = cv2.cvtColor(live, cv2.COLOR_BGR2GRAY)
