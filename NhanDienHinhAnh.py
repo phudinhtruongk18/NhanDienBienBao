@@ -2,7 +2,7 @@ import cv2
 import os
 
 orb = cv2.ORB_create(nfeatures=1000)
-path = "test/chiDan"
+path = "bienbao/"
 #tên đường dẫn đến file cần nhận diện
 #t chia thành 3 thư muc cho máy chạy ổn định
 #một thư mục chỉ dẩn, 1 thư mục cấm
