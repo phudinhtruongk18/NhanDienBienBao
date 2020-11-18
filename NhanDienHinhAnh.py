@@ -2,7 +2,7 @@ import cv2
 import os
 
 orb = cv2.ORB_create(nfeatures=1000)
-path = "bienbao/"
+path = "bienbao/chiDan"
 #tên đường dẫn đến file cần nhận diện
 #t chia thành 3 thư muc cho máy chạy ổn định
 #một thư mục chỉ dẩn, 1 thư mục cấm
@@ -62,7 +62,7 @@ while True:
     liveMauSac = live.copy()
     live = cv2.cvtColor(live, cv2.COLOR_BGR2GRAY)
 
-    tenCuaAnh = timID(live, Nhandang, 6)
+    tenCuaAnh = timID(live, Nhandang, 10)
     #nếu đạt những điều kiện t đưa ra thì nó
     # sẽ in text tên ảnh lên màn hình
     if id != -1:
@@ -72,3 +72,4 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     # bấm q để tắt kết thúc chương trình
+
