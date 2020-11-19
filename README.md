@@ -1,5 +1,7 @@
 # NhanDienBienBao
-day la code p tham khao. khong phai code cua p 
+Bài Báo Cáo Môn Chuyên Đề Giao Thông Thông Minh 
+**************************
+Chủ đề báo cáo : Nhận Diện Biển Báo Thời Gian Thực 
 **************************
 https://www.youtube.com/watch?v=nnH55-zD38I&t=11s
 **************************
