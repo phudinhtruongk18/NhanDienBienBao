@@ -56,6 +56,11 @@ def chuongTrinhNhanDienXe(text):
         if id != -1:
             cv2.putText(liveMauSac, listNameAnh[tenCuaAnh], (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 255), 1)
         ten="Phan Mem Nhan Dien Bien Bao "+ text
+        diemKhacBiet, dinhDanhBiet = orb.detectAndCompute(live, None)
+
+        keypoint = cv2.drawKeypoints(live,diemKhacBiet,None)
+        cv2.imshow("key point",keypoint)
+
         cv2.imshow(ten, liveMauSac)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
@@ -65,32 +70,16 @@ class Application(jra.Frame):
     def __init__(self, master=None):
         super().__init__(master)
         self.master.title("Viet Nam Traffic Signs Detector")
-        self.master.minsize(500, 150)
+        self.master.minsize(500, 100)
+
+        self.ten = jra.Button(self)
+        self.ten["text"] = "Phạm Thanh long, Đinh Xuân Hải, Đặng Tuấn Anh, Trương Đình Phú"
+        self.ten.pack()
 
         self.khoiDong = jra.Button(self)
-        self.khoiDong["text"] = "Biển Báo Chỉ Dẫn"
-        self.khoiDong["command"] = self.PressCheck2
+        self.khoiDong["text"] = "Bắt đầu demo"
+        self.khoiDong["command"] = self.PressCheck
         self.khoiDong.pack()
-
-        self.khac = jra.Button(self)
-        self.khac["text"] = "Biển Báo Lệnh"
-        self.khac["command"] = self.PressCheck3
-        self.khac.pack()
-
-        self.khac1 = jra.Button(self)
-        self.khac1["text"] = "Biển Báo Cấm"
-        self.khac1["command"] = self.PressCheck1
-        self.khac1.pack()
-
-
-        self.khac2 = jra.Button(self)
-        self.khac2["text"] = "Biển Báo Nguy Hiểm"
-        self.khac2["command"] = self.PressCheck4
-        self.khac2.pack()
-
-        # self.text = jra.(self)
-        # self.text["text"] = "Biển Báo Nguy Hiểm"
-        # self.text.pack()
 
         self.quit = jra.Button(self, text="QUIT", command=root.destroy)
         self.quit.pack()
@@ -98,14 +87,8 @@ class Application(jra.Frame):
         self.pack()
         self.mainloop()
 
-    def PressCheck2(self, event=None):
-        chuongTrinhNhanDienXe('chiDan')
-    def PressCheck3(self, event=None):
-        chuongTrinhNhanDienXe('lenh')
-    def PressCheck1(self, event=None):
-        chuongTrinhNhanDienXe('cam')
-    def PressCheck4(self, event=None):
-        chuongTrinhNhanDienXe('nguyHiem')
+    def PressCheck(self, event=None):
+        chuongTrinhNhanDienXe('demo')
 
 
 root = jra.Tk()
