@@ -72,4 +72,3 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     # bấm q để tắt kết thúc chương trình
-
