@@ -71,7 +71,7 @@ class Application(jra.Frame):
 
         Nhandang = timDacDiem(listAnh)
         print(len(Nhandang))
-        quay = cv2.VideoCapture(0)
+        quay = cv2.VideoCapture(0, cv2.CAP_DSHOW)
         while True:
             success, live = quay.read()
             liveMauSac = live.copy()
@@ -88,6 +88,8 @@ class Application(jra.Frame):
             cv2.imshow("Phan Mem Ho Tro Quiz", liveMauSac)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
+        cv2.destroyAllWindows()
+        return 0
 
 
     def nhanDienGiongNoi(self):
@@ -122,7 +124,7 @@ class Application(jra.Frame):
             temp = get_audio()
             temp = format(temp)
             temp = switchAnswer(temp)
-            print()
+            print(temp)
             if temp != [69, 69]:
                 if temp == [5, 5]:
                     break
@@ -133,6 +135,7 @@ class Application(jra.Frame):
                     break
                 pyautogui.click(temp)
         playsound.playsound('thankfor.m4a')
+        return 1
 
 
 root = jra.Tk()
